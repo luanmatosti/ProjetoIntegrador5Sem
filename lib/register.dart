@@ -25,7 +25,7 @@ class Register extends StatelessWidget {
         children: <Widget>[
           TextField(
               controller: _nickControl,
-              decoration: InputDecoration(labelText: 'Apeliddo')),
+              decoration: InputDecoration(labelText: 'Apelido')),
           TextField(
               controller: _emailControl,
               decoration: InputDecoration(labelText: 'Email ')),
