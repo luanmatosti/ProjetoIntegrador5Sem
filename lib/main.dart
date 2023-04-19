@@ -9,8 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Echo',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: LoginScreen()),
+      theme: ThemeData(primarySwatch: Colors.deepOrange),
+      home: LoginScreen(),
     );
   }
 }

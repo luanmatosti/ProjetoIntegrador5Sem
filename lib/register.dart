@@ -2,6 +2,7 @@ import 'package:echo_project/home.dart';
 import 'package:echo_project/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:echo_project/service.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class Register extends StatelessWidget {
   final TextEditingController _nickControl = TextEditingController();
@@ -17,6 +18,8 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var maskNum = MaskTextInputFormatter(mask: '(##) # ####-####');
+    var maskCep = MaskTextInputFormatter(mask: '#####-###');
     return Scaffold(
       appBar: AppBar(
         title: Text('Cadastro'),
@@ -25,7 +28,7 @@ class Register extends StatelessWidget {
         children: <Widget>[
           TextField(
               controller: _nickControl,
-              decoration: InputDecoration(labelText: 'Apeliddo')),
+              decoration: InputDecoration(labelText: 'Apelido')),
           TextField(
               controller: _emailControl,
               decoration: InputDecoration(labelText: 'Email ')),
@@ -39,6 +42,7 @@ class Register extends StatelessWidget {
               controller: _lastnameControl,
               decoration: InputDecoration(labelText: 'Sobrenome')),
           TextField(
+              inputFormatters: [maskCep],
               controller: _zipControl,
               decoration: InputDecoration(labelText: 'CEP')),
           TextField(
@@ -51,6 +55,7 @@ class Register extends StatelessWidget {
               controller: _numberController,
               decoration: InputDecoration(labelText: 'Número')),
           TextField(
+              inputFormatters: [maskNum],
               controller: _phoneController,
               decoration: InputDecoration(labelText: 'Celular')),
           ElevatedButton(
