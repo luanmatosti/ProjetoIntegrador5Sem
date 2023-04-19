@@ -11,10 +11,8 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text(
-          'Echo',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-        ),
+        title: Text('Echo Store'),        
+        backgroundColor: Color.fromRGBO(227, 118, 43, 5),
       ),
       body: Container(
         margin: EdgeInsets.all(20),
@@ -46,7 +44,8 @@ class LoginScreen extends StatelessWidget {
             ),
             Container(
               height: 50,
-              width: MediaQuery.of(context).size.width,
+              //width: MediaQuery.of(context).size.width,
+              width: 200,
               child: ElevatedButton(
                 onPressed: () async {
                   final getToken = await ApiService()
@@ -67,18 +66,25 @@ class LoginScreen extends StatelessWidget {
                         SnackBar(content: Text('Nome ou usuario incorretos')));
                   }
                 },
-                child: Text(
-                  "Login",
-                  style: TextStyle(
+               
+           
+                child: Text(                  
+                  "Login",                             
+                  style: TextStyle(                    
                     fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,  
+                    
+                                  
+                    
                   ),
                 ),
+                
               ),
             ),
             Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
+                            height: 50,
+              //width: MediaQuery.of(context).size.width,
+              width: 200,
               child: ElevatedButton(
                 onPressed: () async {
                   ScaffoldMessenger.of(context).showSnackBar(
