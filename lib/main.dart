@@ -1,3 +1,4 @@
+import 'package:echo_project/carrinho.dart';
 import 'package:echo_project/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Echo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepOrange),
-      home: LoginScreen(),
+      home: CartView(),
     );
   }
 }
