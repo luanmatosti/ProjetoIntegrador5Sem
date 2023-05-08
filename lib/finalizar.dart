@@ -1,4 +1,6 @@
+import 'package:echo_project/endereco.dart';
 import 'package:echo_project/home.dart';
+import 'package:echo_project/pagamentocartao.dart';
 import 'package:echo_project/register.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +36,10 @@ class FinalizarScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => {
-                //do something
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EnderecoScreen()),
+                )
               },
               child: new Text('Escolher Endereço de Entrega'),
             ),
@@ -50,7 +55,10 @@ class FinalizarScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => {
-                //do something
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Pagamento()),
+                )
               },
               child: new Text('Escolher Método de Pagamento'),
             ),
