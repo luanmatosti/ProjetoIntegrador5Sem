@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'controller.dart';
 
 class CartView extends StatefulWidget {
   @override
@@ -33,8 +36,6 @@ class _CartViewState extends State<CartView> {
               ),
             ),
             SizedBox(height: 12.0),
-            CartItem(),
-            CartItem(),
             CartItem(),
             Divider(),
             SizedBox(height: 20.0),
@@ -120,10 +121,13 @@ class _CartViewState extends State<CartView> {
   }
 }
 
+final MyController c = Get.put(MyController());
+
 class CartItem extends StatelessWidget {
   const CartItem({
     Key key,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -175,34 +179,27 @@ class CartItem extends StatelessWidget {
                       width: 20.0,
                       height: 20.0,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Color.fromARGB(255, 113, 245, 5),
                         borderRadius: BorderRadius.circular(4.0),
                       ),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 15.0,
+                      child: IconButton(
+                        icon: Icon(Icons.add,color: Colors.white),
+                        onPressed: ()=> c.increment(),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                            fontSize: 16.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    SizedBox(width: 20),
+                    Obx(() => Text("${c.books.toString()}")),
+                    SizedBox(width: 20),
                     Container(
                       width: 20.0,
                       height: 20.0,
                       decoration: BoxDecoration(
-                        color: Colors.blue[300],
+                        color: Color.fromARGB(255, 226, 7, 7),
                         borderRadius: BorderRadius.circular(4.0),
                       ),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 15.0,
+                      child: IconButton(
+                        icon: Icon(Icons.remove,color: Colors.white),
+                        onPressed: ()=> c.decrement(),
                       ),
                     ),
                     Spacer(),
