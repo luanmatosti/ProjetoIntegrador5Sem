@@ -12,3 +12,4 @@ Assim que clonar o repositório em sua máquina realizar esses passos:
 4 - Pronto, seja feliz :)
 
 https://www.youtube.com/watch?v=vzVDPQQO-lM&list=PLRrrvyvH41WPBV_nK9xHlGgg05nN5GhtZ&index=7
+https://www.youtube.com/watch?v=OLfKwjzYe9Y
