@@ -1,6 +1,7 @@
 import 'package:echo_project/endereco.dart';
 import 'package:echo_project/home.dart';
 import 'package:echo_project/pagamentocartao.dart';
+import 'package:echo_project/pedidoconcluido.dart';
 import 'package:echo_project/register.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
@@ -77,11 +78,15 @@ class FinalizarScreen extends StatelessWidget {
             ),
             Container(
               height: 50,
-              width: MediaQuery.of(context).size.width,
+              width: 250,
+              //width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
-                // onPressed: {
-                // colocar algo para levar para uma tela de pedido concluído
-                // },
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PedidoScreen()),
+                  )
+                },
                 child: Text(
                   "Finalizar",
                   style: TextStyle(
