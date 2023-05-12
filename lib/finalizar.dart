@@ -12,7 +12,7 @@ class FinalizarScreen extends StatelessWidget {
   TextEditingController passwordCont =
       TextEditingController(text: 'Cartão de Crédito - Master Card');
   TextEditingController resumoCont =
-      TextEditingController(text: 'Preço: (1 Item) RS 176,90 ');
+      TextEditingController(text: 'Preço: (1 Item) RS 176,90 \n\n teste');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

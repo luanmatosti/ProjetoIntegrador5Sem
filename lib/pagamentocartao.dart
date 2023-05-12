@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 
-
 class Pagamento extends StatefulWidget {
   @override
   _PagamentoState createState() => _PagamentoState();
 }
 
-
 class _PagamentoState extends State<Pagamento> {
-  final TextEditingController _cardNumberController = TextEditingController();
+  final TextEditingController _cardNumberController =
+      TextEditingController(text: '5594848698731315');
   final TextEditingController _expirationDateController =
-      TextEditingController();
-  final TextEditingController _cvvController = TextEditingController();
+      TextEditingController(text: '09/24');
+  final TextEditingController _cvvController =
+      TextEditingController(text: '278');
   final TextEditingController _cardHolderNameController =
-      TextEditingController();
+      TextEditingController(text: 'Clebinho da Silva Júnior');
   bool _isCardNumberValid = false;
   bool _isExpirationDateValid = false;
   bool _isCvvValid = false;
   bool _isCardHolderNameValid = false;
-
 
   @override
   void dispose() {
@@ -29,13 +28,11 @@ class _PagamentoState extends State<Pagamento> {
     super.dispose();
   }
 
-
   void _validateCardNumber(String value) {
     setState(() {
       _isCardNumberValid = value.length == 16;
     });
   }
-
 
   void _validateExpirationDate(String value) {
     setState(() {
@@ -43,20 +40,17 @@ class _PagamentoState extends State<Pagamento> {
     });
   }
 
-
   void _validateCvv(String value) {
     setState(() {
       _isCvvValid = value.length == 3;
     });
   }
 
-
   void _validateCardHolderName(String value) {
     setState(() {
       _isCardHolderNameValid = value.isNotEmpty;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +73,9 @@ class _PagamentoState extends State<Pagamento> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Digite o número do cartão',
-                          errorText:
-                              _isCardNumberValid ? null : 'Número de cartão inválido',
+                          errorText: _isCardNumberValid
+                              ? null
+                              : 'Número de cartão inválido',
                         ),
                         onChanged: _validateCardNumber,
                       ),
@@ -130,7 +125,6 @@ class _PagamentoState extends State<Pagamento> {
                         onChanged: _validateCardHolderName,
                       ),
                       SizedBox(height: 16.0),
-
 
                       /*RaisedButton(
                 child: Text('Pay'),
