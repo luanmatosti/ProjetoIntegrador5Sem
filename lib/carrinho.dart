@@ -128,7 +128,6 @@ class CartItem extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -183,8 +182,8 @@ class CartItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.add,color: Colors.white),
-                        onPressed: ()=> c.increment(),
+                        icon: Icon(Icons.add, color: Colors.white),
+                        onPressed: () => c.increment(),
                       ),
                     ),
                     SizedBox(width: 20),
@@ -198,8 +197,8 @@ class CartItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.remove,color: Colors.white),
-                        onPressed: ()=> c.decrement(),
+                        icon: Icon(Icons.remove, color: Colors.white),
+                        onPressed: () => c.decrement(),
                       ),
                     ),
                     Spacer(),
