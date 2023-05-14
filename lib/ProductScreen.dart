@@ -21,6 +21,14 @@ class ProductScreen extends StatelessWidget {
     return ListView.separated(
         itemBuilder: (context, index) {
           return ListTile(
+            leading: Builder(builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () {
+                  _valueSetter(products[index]);
+                },
+              );
+            }),
             title: Text(products[index].name),
             trailing: Text(
               "\$${products[index].price}",
@@ -29,9 +37,6 @@ class ProductScreen extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
-            onTap: () {
-              _valueSetter(products[index]);
-            },
           );
         },
         separatorBuilder: (context, index) {

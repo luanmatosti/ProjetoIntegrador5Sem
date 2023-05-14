@@ -22,7 +22,6 @@ class CheckoutScreen extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w500),
               ),
-              onTap: () {},
             );
           },
           separatorBuilder: (context, index) {
