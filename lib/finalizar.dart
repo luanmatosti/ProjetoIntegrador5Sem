@@ -13,7 +13,7 @@ class FinalizarScreen extends StatelessWidget {
   TextEditingController passwordCont =
       TextEditingController(text: 'Cartão de Crédito - Master Card');
   TextEditingController resumoCont =
-      TextEditingController(text: 'Preço: (1 Item) RS 176,90 \n\n teste');
+      TextEditingController(text: 'Preço: (1 Item) RS 176,90');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +29,7 @@ class FinalizarScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextField(
+              enabled: false,
               controller: usernameCont,
               decoration: InputDecoration(
                 labelText: "Endereço",
@@ -48,6 +49,7 @@ class FinalizarScreen extends StatelessWidget {
               height: 25,
             ),
             TextField(
+              enabled: false,
               controller: passwordCont,
               decoration: InputDecoration(
                 labelText: "Método de Pagamento",
@@ -67,6 +69,7 @@ class FinalizarScreen extends StatelessWidget {
               height: 25,
             ),
             TextField(
+              enabled: false,
               controller: resumoCont,
               decoration: InputDecoration(
                 labelText: "Resumo",

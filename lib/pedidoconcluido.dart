@@ -39,6 +39,12 @@ class PedidoScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
+            Text("ID: D123456789ABC ",
+                style: TextStyle(
+                  fontSize: 40.0,
+                )),
+
+            /*
             TextField(
               controller: idCont,
               decoration: InputDecoration(
@@ -46,6 +52,7 @@ class PedidoScreen extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
+            
             SizedBox(
               height: 25,
             ),
@@ -114,6 +121,8 @@ class PedidoScreen extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
+
+            */
             Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
