@@ -1,0 +1,31 @@
+{
+  "finalizar": {
+    "itens": [
+      {
+        "idProduto": "P001",
+        "nome": "Produto 1",
+        "quantidade": 2,
+        "precoUnitario": 9.99
+      },
+      {
+        "idProduto": "P002",
+        "nome": "Produto 2",
+        "quantidade": 1,
+        "precoUnitario": 14.99
+      }
+    ],
+    "total": 100,
+    "enderecoEntrega": {
+      "rua": "1",
+      "numero": "1",
+      "referenca": "1",
+      "cep": "1"
+    },
+    "informacoesPagamento": {
+      "numeroCartao": "1",
+      "dataValidade": "1",
+      "codigoSeguranca": "1",
+      "Nome": "1"
+    }
+  }
+}

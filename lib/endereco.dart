@@ -1,9 +1,4 @@
-import 'package:echo_project/home.dart';
-import 'package:echo_project/pagamentocartao.dart';
-import 'package:echo_project/register.dart';
-import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
-import 'package:echo_project/login_screen.dart';
 
 class EnderecoScreen extends StatelessWidget {
   TextEditingController LogradouroCont =
@@ -65,7 +60,6 @@ class EnderecoScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-          
             TextField(
               controller: refeCont,
               decoration: InputDecoration(

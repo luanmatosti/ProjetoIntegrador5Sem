@@ -1,75 +1,104 @@
-import 'package:echo_project/endereco.dart';
 import 'package:echo_project/home.dart';
-import 'package:echo_project/pagamentocartao.dart';
 import 'package:echo_project/pedidoconcluido.dart';
-import 'package:echo_project/register.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
-import 'package:echo_project/login_screen.dart';
 
 class FinalizarScreen extends StatelessWidget {
-  TextEditingController usernameCont =
-      TextEditingController(text: 'Av. Eusébio Stevaux');
-  TextEditingController passwordCont =
-      TextEditingController(text: 'Cartão de Crédito - Master Card');
-  TextEditingController resumoCont =
-      TextEditingController(text: 'Preço: (1 Item) RS 176,90 \n\n teste');
+  TextEditingController ruaCont = TextEditingController();
+  TextEditingController numeroCont = TextEditingController();
+  TextEditingController referenciaCont = TextEditingController();
+  TextEditingController cepCont = TextEditingController();
+  TextEditingController numeroCartaoCont = TextEditingController();
+  TextEditingController dataValidadeCont = TextEditingController();
+  TextEditingController codigoSegurancaCont = TextEditingController();
+  TextEditingController nomeCont = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+            onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return Home();
+                }))),
         title: Text('Finalizar Pedido'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextField(
-              controller: usernameCont,
+              controller: ruaCont,
               decoration: InputDecoration(
                 labelText: "Endereço",
                 border: OutlineInputBorder(),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EnderecoScreen()),
-                )
-              },
-              child: new Text('Escolher Endereço de Entrega'),
-            ),
             SizedBox(
               height: 25,
             ),
             TextField(
-              controller: passwordCont,
+              controller: numeroCont,
               decoration: InputDecoration(
-                labelText: "Método de Pagamento",
+                labelText: "Numero do cartão",
                 border: OutlineInputBorder(),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Pagamento()),
-                )
-              },
-              child: new Text('Escolher Método de Pagamento'),
+            SizedBox(
+              height: 25,
+            ),
+            TextField(
+              controller: referenciaCont,
+              decoration: InputDecoration(
+                labelText: "Referencia",
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(
               height: 25,
             ),
             TextField(
-              controller: resumoCont,
+              controller: cepCont,
+              decoration: InputDecoration(
+                labelText: "CEP",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            TextField(
+              controller: numeroCartaoCont,
               decoration: InputDecoration(
                 labelText: "Resumo",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            TextField(
+              controller: dataValidadeCont,
+              decoration: InputDecoration(
+                labelText: "data de validade",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            TextField(
+              controller: codigoSegurancaCont,
+              decoration: InputDecoration(
+                labelText: "CVV",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            TextField(
+              controller: nomeCont,
+              decoration: InputDecoration(
+                labelText: "Nome completo",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -81,11 +110,36 @@ class FinalizarScreen extends StatelessWidget {
               width: 250,
               //width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PedidoScreen()),
-                  )
+                onPressed: () async {
+                  final String rua = ruaCont.text;
+                  final String numero = numeroCont.text;
+                  final String referencia = referenciaCont.text;
+                  final String cep = cepCont.text;
+                  final String numeroCartao = numeroCartaoCont.text;
+                  final String dataValidade = dataValidadeCont.text;
+                  final String codigoSeguranca = codigoSegurancaCont.text;
+                  final String nome = nomeCont.text;
+
+                  final Endereco newEndereco =
+                      Endereco(rua, numero, referencia, cep);
+
+                  InformacoesPagamento newInformacoesPagamento =
+                      InformacoesPagamento(
+                          numeroCartao, dataValidade, codigoSeguranca, nome);
+                  FinalizarCompra newFinalizarCompra = FinalizarCompra(
+                      100, newEndereco, newInformacoesPagamento);
+
+                  final stats =
+                      await ApiService().finishBuy(newFinalizarCompra);
+
+                  if (stats != null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Compra realizada! ^^')));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PedidoScreen()),
+                    );
+                  }
                 },
                 child: Text(
                   "Finalizar",

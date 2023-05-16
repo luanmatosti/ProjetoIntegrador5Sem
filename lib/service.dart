@@ -44,8 +44,57 @@ class ApiService {
     print(result.body);
     return json.decode(result.body);
   }
+
+  Future getSingleProduct(int id) async {
+    final singleProd = Uri.parse('https://fakestoreapi.com/products/$id');
+    final result = await http.get(singleProd);
+
+    return json.decode(result.body);
+  }
+
+  Future finishBuy(FinalizarCompra buy) async {
+    final userUrl = Uri.parse('http://localhost:3000/finalizar');
+    final result = await http.post(userUrl,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          "itens": [
+            {
+              "idProduto": "P001",
+              "nome": "Produto 1",
+              "quantidade": 2,
+              "precoUnitario": 9.99
+            },
+            {
+              "idProduto": "P002",
+              "nome": "Produto 2",
+              "quantidade": 1,
+              "precoUnitario": 14.99
+            }
+          ],
+          "total": buy.total,
+          "enderecoEntrega": {
+            "rua": buy.enderecoEntrega.rua,
+            "numero": buy.enderecoEntrega.numero,
+            "referenca": buy.enderecoEntrega.referencia,
+            "cep": buy.enderecoEntrega.cep
+          },
+          "informacoesPagamento": {
+            "numeroCartao": buy.informacoesPagamento.numeroCartao,
+            "dataValidade": buy.informacoesPagamento.dataValidade,
+            "codigoSeguranca": buy.informacoesPagamento.codigoSeguranca,
+            "Nome": buy.informacoesPagamento.nome
+          }
+        }));
+
+    print(result.statusCode);
+    print(result.body);
+    return json.decode(result.body);
+  }
 }
 
+//classe para usuario
 class User {
   final String nickname;
   final String email;
@@ -81,5 +130,65 @@ class User {
         '$zipcode, cell: $phone , lat: $lat, long: $long}';
   }
 }
-//luantesteandoi
-//ha passou aqurapi
+
+//classe para finalizar compra
+class FinalizarCompra {
+  //List<ItemCompra> itens;
+  double total;
+  Endereco enderecoEntrega;
+  InformacoesPagamento informacoesPagamento;
+
+  FinalizarCompra(
+    // this.itens,
+    this.total,
+    this.enderecoEntrega,
+    this.informacoesPagamento,
+  );
+
+  @override
+  String toString() {
+    return 'FinalizarCompra{ itens: itens, total: $total, enderecoEntrega: $enderecoEntrega, informacoesPagamento: $informacoesPagamento}';
+  }
+}
+
+class ItemCompra {
+  String idProduto;
+  String nome;
+  int quantidade;
+  double precoUnitario;
+
+  ItemCompra(
+    this.idProduto,
+    this.nome,
+    this.quantidade,
+    this.precoUnitario,
+  );
+}
+
+class Endereco {
+  String rua;
+  String numero;
+  String referencia;
+  String cep;
+
+  Endereco(
+    this.rua,
+    this.numero,
+    this.referencia,
+    this.cep,
+  );
+}
+
+class InformacoesPagamento {
+  String numeroCartao;
+  String dataValidade;
+  String codigoSeguranca;
+  String nome;
+
+  InformacoesPagamento(
+    this.numeroCartao,
+    this.dataValidade,
+    this.codigoSeguranca,
+    this.nome,
+  );
+}

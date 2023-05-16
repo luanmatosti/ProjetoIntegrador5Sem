@@ -1,9 +1,4 @@
-import 'package:echo_project/home.dart';
-import 'package:echo_project/pagamentocartao.dart';
-import 'package:echo_project/register.dart';
-import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
-import 'package:echo_project/login_screen.dart';
 
 class PedidoScreen extends StatelessWidget {
   TextEditingController idCont = TextEditingController(text: 'D123456789ABC');
@@ -20,10 +15,7 @@ class PedidoScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Recibo'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,19 +44,12 @@ class PedidoScreen extends StatelessWidget {
             TextField(
               controller: dataCont,
               decoration: InputDecoration(
-                labelText: "Data",
+                labelText: "Data e Hora",
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(
               height: 25,
-            ),
-            TextField(
-              controller: horaCont,
-              decoration: InputDecoration(
-                labelText: "Horário",
-                border: OutlineInputBorder(),
-              ),
             ),
             SizedBox(
               height: 25,
@@ -104,13 +89,6 @@ class PedidoScreen extends StatelessWidget {
               controller: totalCont,
               decoration: InputDecoration(
                 labelText: "Total",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            TextField(
-              controller: metodoCont,
-              decoration: InputDecoration(
-                labelText: "Método de Pagamento",
                 border: OutlineInputBorder(),
               ),
             ),
