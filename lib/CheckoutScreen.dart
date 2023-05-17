@@ -13,14 +13,23 @@ class CheckoutScreen extends StatelessWidget {
       children: <Widget>[
         ListView.separated(
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(cart[index].name),
-              trailing: Text(
-                "\$${cart[index].price}",
-                style: TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500),
+            return Card(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    Text(cart[index].name),
+                    SizedBox(height: 8.0),
+                    Text(
+                      "\$${cart[index].price}",
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -32,6 +41,23 @@ class CheckoutScreen extends StatelessWidget {
         ),
         Divider(),
         Text("Total : \$$sum"),
+        Divider(),
+        MaterialButton(
+          onPressed: () {},
+          color: Color.fromARGB(255, 255, 115, 34),
+          height: 50.0,
+          minWidth: double.minPositive,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          child: Text(
+            "Finalizar",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ],
     );
   }
