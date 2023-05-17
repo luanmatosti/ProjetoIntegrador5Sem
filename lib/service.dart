@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'dart:math';
 
 class ApiService {
   Future userLogin(String username, String password) async {
@@ -52,13 +53,48 @@ class ApiService {
     return json.decode(result.body);
   }
 
+  Future getSingleCart(int id) async {
+    final singleCart = Uri.parse('http://localhost:3000/cart/3');
+    final result = await http.get(singleCart);
+    return json.decode(result.body);
+  }
+
+  Future getBuy() async {
+    final buy = Uri.parse('http://localhost:3000/finalizar');
+    final result = await http.get(buy);
+    print(result.statusCode);
+    print(result.body);
+    return json.decode(result.body);
+  }
+
+  Future addProduct(Map<String, dynamic> newProduct) async {
+    final response = await http.get(Uri.parse('http://localhost:3000/cart/3'));
+    if (response.statusCode == 200) {
+      final cart = json.decode(response.body);
+      List<dynamic> products = cart['products'];
+      products.add(newProduct);
+      cart['products'] = products;
+      final updatedJsonString = json.encode(cart);
+
+      final putResponse = await http.put(
+          Uri.parse('http://localhost:3000/cart/3'),
+          body: updatedJsonString);
+      if (putResponse.statusCode == 200) {
+        print('foi');
+      }
+    }
+  }
+
   Future finishBuy(FinalizarCompra buy) async {
     final userUrl = Uri.parse('http://localhost:3000/finalizar');
+    Random random = Random();
+    int randomNumber = random.nextInt(9000) + 1000;
     final result = await http.post(userUrl,
         headers: {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
+          "idCompra": randomNumber,
           "itens": [
             {
               "idProduto": "P001",

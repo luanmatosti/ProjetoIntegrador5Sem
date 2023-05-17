@@ -50,7 +50,13 @@ class ProductDetails extends StatelessWidget {
                         backgroundColor: Colors.blueGrey,
                       ),
                       SizedBox(height: 30),
-                      Text(snapshot.data['description'])
+                      Text(snapshot.data['description']),
+                      FloatingActionButton(
+                        child: Icon(Icons.add_shopping_cart),
+                        onPressed: () {
+                          ApiService().addProduct(snapshot.data);
+                        },
+                      ),
                     ],
                   ),
                 );
@@ -63,11 +69,8 @@ class ProductDetails extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.shopping_cart),
-        onPressed: () {},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
