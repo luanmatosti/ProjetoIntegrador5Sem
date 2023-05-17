@@ -41,6 +41,14 @@ class _CartAppState extends State<CartApp> {
                   sum = sum + item.price;
                 });
               });
+            }, (removedProduct) {
+              setState(() {
+                cart.remove(removedProduct);
+                sum = 0;
+                cart.forEach((item) {
+                  sum = sum - item.price;
+                });
+              });
             }),
             CheckoutScreen(cart, sum),
           ],

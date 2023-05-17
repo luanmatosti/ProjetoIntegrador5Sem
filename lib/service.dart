@@ -19,6 +19,12 @@ class ApiService {
     return json.decode(result.body);
   }
 
+  Future getSingleCart() async {
+    final singleCartUrl = Uri.parse('https://fakestoreapi.com/carts/5');
+    final result = await http.get(singleCartUrl);
+    return json.decode(result.body);
+  }
+
   Future userRegister(User user) async {
     final userUrl = Uri.parse('https://fakestoreapi.com/users');
     final result = await http.post(userUrl,
