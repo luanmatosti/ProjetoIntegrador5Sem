@@ -1,0 +1,37 @@
+{
+  "finalizar": {
+    "idCompra": 4379,
+    "itens": [
+      {
+        "idProduto": "1",
+        "nome": "Produto 1",
+        "quantidade": 2,
+        "precoUnitario": 9.99
+      },
+      {
+        "idProduto": "2",
+        "nome": "Produto 2",
+        "quantidade": 1,
+        "precoUnitario": 14.99
+      }
+    ],
+    "total": 100,
+    "enderecoEntrega": {
+      "rua": "8",
+      "numero": "18",
+      "referenca": "8",
+      "cep": "8"
+    },
+    "informacoesPagamento": {
+      "numeroCartao": "8",
+      "dataValidade": "8",
+      "codigoSeguranca": "88",
+      "Nome": "8"
+    }
+  },
+  "cart": [
+    {
+      "id": 3
+    }
+  ]
+}

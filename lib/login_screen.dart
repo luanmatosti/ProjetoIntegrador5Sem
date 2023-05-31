@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
             TextField(
               controller: usernameCont,
               decoration: InputDecoration(
-                labelText: "Nome",
+                labelText: "mor_2314",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
             TextField(
               controller: passwordCont,
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "83r5^_",
                 border: OutlineInputBorder(),
               ),
             ),

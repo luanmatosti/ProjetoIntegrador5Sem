@@ -4,9 +4,11 @@ A new Flutter project.
 
 ## Getting Started
 
-Assim que clonar o repositório em sua máquina realizar esses passos:
+Assim que clonar o repositório em sua máquina realizar esses passos:\m
 
-1 - Abrir o pasta do projeto onde você criou.
-2 - Clicar com o botão direito e clicar em "GIT Bash Here"
-3 - Escrever "flutter pub get"
-4 - Pronto, seja feliz :)
+\n1 - Abrir o pasta do projeto onde você criou.
+\n2 - Clicar com o botão direito e clicar em "GIT Bash Here"
+\n3 - Escrever "flutter pub get"
+\n4 - Pronto, seja feliz :)
+
+criando branch
