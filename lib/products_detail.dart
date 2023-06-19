@@ -54,7 +54,9 @@ class ProductDetails extends StatelessWidget {
                       FloatingActionButton(
                         child: Icon(Icons.add_shopping_cart),
                         onPressed: () {
-                          ApiService().addProduct(snapshot.data);
+                          ApiService().addProduct(
+                              snapshot.data['title'].toString(),
+                              snapshot.data['price']);
                         },
                       ),
                     ],

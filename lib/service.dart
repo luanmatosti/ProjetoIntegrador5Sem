@@ -3,6 +3,55 @@ import 'package:http/http.dart' as http;
 import 'dart:math';
 
 class ApiService {
+  Future modifyQuantity(int id, int newQuantity) async {
+    final url = Uri.parse('http://localhost:3000/cart/$id');
+
+    final response = await http.patch(
+      url,
+      body: jsonEncode({'quantity': newQuantity}),
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(id.toString() + " " + newQuantity.toString());
+
+    if (response.statusCode == 200) {
+      // Atualização bem-sucedida
+      print('Produto atualizado com sucesso');
+    } else {
+      // Lidar com erros de resposta
+      print(
+          'Falha ao atualizar o produto. Código de status: ${response.statusCode}');
+    }
+  }
+
+  Future addProduct(String title, double price) async {
+    final url = Uri.parse('http://localhost:3000/cart');
+    final result = await http.post(
+      url,
+      body: jsonEncode({'title': title, 'price': price}),
+      headers: {'Content-Type': 'application/json'},
+    );
+  }
+
+  Future cleanCart(id) async {
+    final url = Uri.parse('http://localhost:3000/cart/$id');
+
+    final response = await http.delete(url);
+    if (response.statusCode == 200) {
+      // Exclusão bem-sucedida
+      print('IDs excluídos com sucesso');
+    } else {
+      // Lidar com erros de resposta
+      print(
+          'Falha ao excluir os IDs. Código de status: ${response.statusCode}');
+    }
+  }
+
+  Future getCart() async {
+    final allProductsUrl = Uri.parse('http://localhost:3000/cart/');
+    final result = await http.get(allProductsUrl);
+    return json.decode(result.body);
+  }
+
   Future userLogin(String username, String password) async {
     final loginUrl = Uri.parse('https://fakestoreapi.com/auth/login');
     final result = await http
@@ -65,24 +114,6 @@ class ApiService {
     print(result.statusCode);
     print(result.body);
     return json.decode(result.body);
-  }
-
-  Future addProduct(Map<String, dynamic> newProduct) async {
-    final response = await http.get(Uri.parse('http://localhost:3000/cart/3'));
-    if (response.statusCode == 200) {
-      final cart = json.decode(response.body);
-      List<dynamic> products = cart['products'];
-      products.add(newProduct);
-      cart['products'] = products;
-      final updatedJsonString = json.encode(cart);
-
-      final putResponse = await http.put(
-          Uri.parse('http://localhost:3000/cart/3'),
-          body: updatedJsonString);
-      if (putResponse.statusCode == 200) {
-        print('foi');
-      }
-    }
   }
 
   Future finishBuy(FinalizarCompra buy) async {
