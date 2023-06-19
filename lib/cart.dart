@@ -1,4 +1,5 @@
 import 'package:echo_project/finalizar.dart';
+import 'package:echo_project/login_screen.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
 
@@ -131,11 +132,14 @@ class _CartPageState extends State<CartPage> {
                       actions: [
                         TextButton(
                           onPressed: () async {
-                            print("foi");
+                            for (int id in allIds) {
+                              await ApiService().cleanCart(id);
+                            }
+
                             Future.delayed(Duration(seconds: 1), () {
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return CartPage();
+                                return LoginScreen();
                               }));
                             });
                           },

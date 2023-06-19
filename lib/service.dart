@@ -27,7 +27,7 @@ class ApiService {
     final url = Uri.parse('http://localhost:3000/cart');
     final result = await http.post(
       url,
-      body: jsonEncode({'title': title, 'price': price}),
+      body: jsonEncode({'title': title, 'price': price, 'quantity': 1}),
       headers: {'Content-Type': 'application/json'},
     );
   }
@@ -38,11 +38,7 @@ class ApiService {
     final response = await http.delete(url);
     if (response.statusCode == 200) {
       // Exclusão bem-sucedida
-      print('IDs excluídos com sucesso');
-    } else {
-      // Lidar com erros de resposta
-      print(
-          'Falha ao excluir os IDs. Código de status: ${response.statusCode}');
+      print('Carrinho limpo');
     }
   }
 
