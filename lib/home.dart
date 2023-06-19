@@ -1,4 +1,4 @@
-import 'package:echo_project/carrinho2.dart';
+import 'package:echo_project/cart.dart';
 import 'package:echo_project/finalizar.dart';
 import 'package:echo_project/products_detail.dart';
 import 'package:echo_project/service.dart';
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
           Future.delayed(Duration(seconds: 1), () {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) {
-              return CartApp();
+              return CartPage();
             }));
           });
         },
