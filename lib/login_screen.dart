@@ -14,23 +14,18 @@ class LoginScreen extends StatelessWidget {
         title: Text('Echo Store'),
         backgroundColor: Color.fromRGBO(227, 118, 43, 5),
       ),
-      body: Container(    
-             
-              
-
-        
+      body: Container(
         margin: EdgeInsets.all(20),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextField(
               controller: usernameCont,
               decoration: InputDecoration(
-                labelText: "mor_2314",
+                labelText: "Usuário",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -40,7 +35,7 @@ class LoginScreen extends StatelessWidget {
             TextField(
               controller: passwordCont,
               decoration: InputDecoration(
-                labelText: "83r5^_",
+                labelText: "Senha",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -48,7 +43,6 @@ class LoginScreen extends StatelessWidget {
               height: 25,
             ),
             Container(
-              
               height: 50,
               //width: MediaQuery.of(context).size.width,
               width: 200,
@@ -56,7 +50,6 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () async {
                   final getToken = await ApiService()
                       .userLogin(usernameCont.text, passwordCont.text);
-                      
 
                   if (getToken['token'] != null) {
                     ScaffoldMessenger.of(context)
@@ -81,10 +74,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-             
             ),
             Container(
-              
               height: 50,
               //width: MediaQuery.of(context).size.width,
               width: 200,
@@ -107,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ), 
+            ),
             Image.asset('assets/imagens/logo.png'),
           ],
         ),
