@@ -11,14 +11,19 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Echo Store'),        
+        title: Text('Echo Store'),
         backgroundColor: Color.fromRGBO(227, 118, 43, 5),
       ),
-      body: Container(
+      body: Container(    
+             
+              
+
+        
         margin: EdgeInsets.all(20),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
+          
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -43,6 +48,7 @@ class LoginScreen extends StatelessWidget {
               height: 25,
             ),
             Container(
+              
               height: 50,
               //width: MediaQuery.of(context).size.width,
               width: 200,
@@ -50,6 +56,7 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () async {
                   final getToken = await ApiService()
                       .userLogin(usernameCont.text, passwordCont.text);
+                      
 
                   if (getToken['token'] != null) {
                     ScaffoldMessenger.of(context)
@@ -66,23 +73,19 @@ class LoginScreen extends StatelessWidget {
                         SnackBar(content: Text('Nome ou usuario incorretos')));
                   }
                 },
-               
-           
-                child: Text(                  
-                  "Login",                             
-                  style: TextStyle(                    
+                child: Text(
+                  "Login",
+                  style: TextStyle(
                     fontSize: 25,
-                    fontWeight: FontWeight.bold,  
-                    
-                                  
-                    
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                
               ),
+             
             ),
             Container(
-                            height: 50,
+              
+              height: 50,
               //width: MediaQuery.of(context).size.width,
               width: 200,
               child: ElevatedButton(
@@ -104,7 +107,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ), 
+            Image.asset('assets/imagens/logo.png'),
           ],
         ),
       ),

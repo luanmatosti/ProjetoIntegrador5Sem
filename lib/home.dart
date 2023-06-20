@@ -1,6 +1,3 @@
-import 'package:echo_project/cart.dart';
-import 'package:echo_project/finalizar.dart';
-import 'package:echo_project/products_detail.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
 
@@ -34,13 +31,6 @@ class _HomeState extends State<Home> {
                     ),
                     subtitle: Text("Preço - \$" +
                         snapshot.data[index]['price'].toString()),
-                    onTap: () {
-                      Navigator.push(context,
-                          // ignore: missing_return
-                          MaterialPageRoute(builder: (context) {
-                        return ProductDetails(snapshot.data[index]['id']);
-                      }));
-                    },
                   );
                 },
                 itemCount: snapshot.data.length,
@@ -53,18 +43,6 @@ class _HomeState extends State<Home> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.shopping_cart),
-        onPressed: () {
-          Future.delayed(Duration(seconds: 1), () {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) {
-              return CartPage();
-            }));
-          });
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
