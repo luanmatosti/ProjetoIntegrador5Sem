@@ -3,6 +3,8 @@ import 'package:echo_project/register.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
 
+
+
 class LoginScreen extends StatelessWidget {
   TextEditingController usernameCont = TextEditingController(text: 'donero');
   TextEditingController passwordCont = TextEditingController(text: 'ewedon');
@@ -99,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Image.asset('assets/imagens/logo.png'),
+            Image.network-('./assets/imagens/logo.png'),
           ],
         ),
       ),
