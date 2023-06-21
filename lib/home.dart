@@ -1,5 +1,6 @@
 import 'package:echo_project/cart.dart';
 import 'package:echo_project/finalizar.dart';
+import 'package:echo_project/login_screen.dart';
 import 'package:echo_project/products_detail.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Menu'),
+        leading: BackButton(
+            onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return LoginScreen();
+                }))),
+      ),
       body: Container(
         child: FutureBuilder(
           future: ApiService().getAllProducts(),

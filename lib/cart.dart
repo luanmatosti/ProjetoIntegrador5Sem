@@ -1,4 +1,5 @@
 import 'package:echo_project/finalizar.dart';
+import 'package:echo_project/home.dart';
 import 'package:echo_project/login_screen.dart';
 import 'package:echo_project/service.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,11 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Carrinho de Compras'),
+        leading: BackButton(
+            onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return Home();
+                }))),
       ),
       body: Container(
         child: FutureBuilder(
@@ -62,8 +68,9 @@ class _CartPageState extends State<CartPage> {
                     title: Text(snapshot.data[index]['title']),
                     subtitle: Text(
                       (snapshot.data[index]['price'] *
-                              snapshot.data[index]['quantity'])
-                          .toString(),
+                                  snapshot.data[index]['quantity'])
+                              .toString() +
+                          " R\$",
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -77,6 +84,12 @@ class _CartPageState extends State<CartPage> {
                                 snapshot.data[index]['id'],
                                 snapshot.data[index]['quantity'] - 1,
                               )
+                                  .then((_) {
+                                setState(() {});
+                              });
+                            } else {
+                              ApiService()
+                                  .cleanCart(snapshot.data[index]['id'])
                                   .then((_) {
                                 setState(() {});
                               });
@@ -128,7 +141,7 @@ class _CartPageState extends State<CartPage> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: Text('Compra Finalizada'),
-                      content: Text('Total: $total'),
+                      content: Text('Total: R\$ ${total.toStringAsFixed(2)} '),
                       actions: [
                         TextButton(
                           onPressed: () async {
@@ -139,7 +152,7 @@ class _CartPageState extends State<CartPage> {
                             Future.delayed(Duration(seconds: 1), () {
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return LoginScreen();
+                                return Home();
                               }));
                             });
                           },
